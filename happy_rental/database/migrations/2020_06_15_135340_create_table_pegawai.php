@@ -21,7 +21,9 @@ class CreateTablePegawai extends Migration
             $table->string('jenis_kelamin');
             $table->string('no_tlp');
             $table->text('alamat');
+            $table->string('ttl');
             $table->string('jabatan');
+            $table->text('foto');
             $table->timestamps();
         });
     }

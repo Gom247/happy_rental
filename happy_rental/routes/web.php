@@ -18,3 +18,5 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboards', 'DashboardController@index')->name('dashboard');
+Route::get('/data_pegawai', 'PegawaiController@index')->name('pegawai');
+Route::post('/data_pegawai', 'PegawaiController@create')->name('pegawai.create');

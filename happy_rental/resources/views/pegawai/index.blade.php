@@ -25,13 +25,12 @@ Pegawai
                                 <table class="table table-bordered table-hover table-striped">
                                     <thead>
                                         <tr>
-                                            <th>No</th>
+                                            <th scope="row">No</th>
                                             <th>Nama</th>
                                             <th>Email</th>
                                             <th>Jenis Kelamin</th>
                                             <th>Alamat</th>
                                             <th>No Tlp</th>
-                                            <th>Tempat Tanggal Lahir</th>
                                             <th>Posisi</th>
                                             <th>Foto</th>
                                             <th colspan="2">Aksi</th>
@@ -44,15 +43,15 @@ Pegawai
                                         @foreach($pegawai as $pgw)
                                         <tr>
                                             <td>{{ $no }}</td>
-                                            <td>{{ $pgw->name }}</td>
+                                            <td><a href="{{ route('pegawai.profile', $pgw->id) }}">{{ $pgw->name }}</a>
+                                            </td>
                                             <td>{{ $pgw->email }}</td>
                                             <td>{{ $pgw->jenis_kelamin }}</td>
                                             <td>{{ $pgw->alamat }}</td>
                                             <td>{{ $pgw->no_tlp }}</td>
-                                            <td>{{ $pgw->ttl }}</td>
                                             <td>{{ $pgw->jabatan }}</td>
-                                            <td></td>
-                                            <td><a href="" class="btn btn-warning">Edit</a></td>
+                                            <td><img src="{{ $pgw->getAvatar() }}" width="100" height="100" alt=""></td>
+                                            <td><a href="{{ route('pegawai.edit', $pgw->id) }}" class="btn btn-warning">Edit</a></td>
                                             <td><a href="" class="btn btn-danger">Delete</a></td>
                                         </tr>
                                         @php
@@ -85,55 +84,52 @@ Pegawai
                 <div class="container-fluid">
                     <form action="{{ route('pegawai.create') }}" enctype="multipart/form-data" method="POST">
                         {{ csrf_field() }}
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="">Nama</label>
-                                    <input type="text" name="name" class="form-control" placeholder="Nama" id="">
-                                </div>
-                                <div class="group">
-                                    <label for="">Email</label>
-                                    <input type="email" name="email" class="form-control" placeholder="Email" id="">
-                                </div>
-                                <div class="form-group">
-                                    <label for="">Jenis Kelamin</label>
-                                    <select name="jenis_kelamin" class="form-control" id="">
-                                        <option>---</option>
-                                        <option value="Laki-Laki">Laki-Laki</option>
-                                        <option value="Perempuan">Perempuan</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="">Alamat</label>
-                                    <textarea name="alamat" class="form-control" id="" cols="30" rows="10"></textarea>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="">No Telp</label>
-                                    <input type="number" name="no_tlp" class="form-control" placeholder="No Telp" id="">
-                                </div>
-                                <div class="form-group">
-                                    <label for="">Tempat Tanggal Lahir</label>
-                                    <input type="text" name="ttl" class="form-control" placeholder="tempat, tanggal" id="">
-                                </div>
-                                <div class="form-group">
-                                    <label for="">Posisi</label>
-                                    <select name="jabatan" class="form-control" id="">
-                                        <option>---</option>
-                                        <option value="Manager">Manager</option>
-                                        <option value="Keuangan">Keuangan</option>
-                                        <option value="CS">CS</option>
-                                        <option value="Sopir">Sopir</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="">Foto</label>
-                                    <input type="file" name="foto" class="form-control" id="">
-                                </div>
-                            </div>
+                        <div class="form-group">
+                            <label for="">Nama</label>
+                            <input type="text" name="name" class="form-control" placeholder="Nama" id="">
                         </div>
-
+                        <div class="group">
+                            <label for="">Email</label>
+                            <input type="email" name="email" class="form-control" placeholder="Email" id="">
+                        </div>
+                        <div class="group">
+                            <label for="">Password</label>
+                            <input type="password" name="password" class="form-control" placeholder="Password" id="">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Jenis Kelamin</label>
+                            <select name="jenis_kelamin" class="form-control" id="">
+                                <option>---</option>
+                                <option value="Laki-Laki">Laki-Laki</option>
+                                <option value="Perempuan">Perempuan</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Alamat</label>
+                            <textarea name="alamat" class="form-control" id="" cols="30" rows="10"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="">No Telp</label>
+                            <input type="number" name="no_tlp" class="form-control" placeholder="No Telp" id="">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Tempat Tanggal Lahir</label>
+                            <input type="text" name="ttl" class="form-control" placeholder="tempat, tanggal" id="">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Posisi</label>
+                            <select name="jabatan" class="form-control" id="">
+                                <option>---</option>
+                                <option value="Manager">Manager</option>
+                                <option value="Keuangan">Keuangan</option>
+                                <option value="CS">CS</option>
+                                <option value="Sopir">Sopir</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Foto</label>
+                            <input type="file" name="foto" class="form-control" id="">
+                        </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                             <button type="submit" class="btn btn-primary">Simpan</button>

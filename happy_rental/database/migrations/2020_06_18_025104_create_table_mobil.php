@@ -18,8 +18,10 @@ class CreateTableMobil extends Migration
             $table->string('kode');
             $table->string('nama');
             $table->string('kapasitas');
+            $table->string('merek');
             $table->integer('harga');
             $table->string('plat_nomor');
+            $table->text('foto');
             $table->timestamps();
         });
     }

@@ -24,3 +24,5 @@ Route::get('/data_pegawai/{id}/profile', 'PegawaiController@profile')->name('peg
 Route::get('/data_pegawai/{id}/edit', 'PegawaiController@edit')->name('pegawai.edit');
 Route::post('/data_pegawai/{id}/update', 'PegawaiController@update')->name('pegawai.update');
 Route::get('/data_pegawai/{id}/delete', 'PegawaiController@delete')->name('pegawai.delete');
+Route::get('/data_mobil', 'RentalController@mobil')->name('mobil');
+Route::post('/data_mobil/create', 'RentalController@mobilcreate')->name('mobil.create');

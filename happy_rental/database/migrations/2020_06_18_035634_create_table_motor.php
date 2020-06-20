@@ -20,6 +20,7 @@ class CreateTableMotor extends Migration
             $table->string('merek');
             $table->string('harga');
             $table->string('plat_nomor');
+            $table->text('foto');
             $table->timestamps();
         });
     }

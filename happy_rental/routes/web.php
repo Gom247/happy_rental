@@ -23,3 +23,4 @@ Route::post('/data_pegawai', 'PegawaiController@create')->name('pegawai.create')
 Route::get('/data_pegawai/{id}/profile', 'PegawaiController@profile')->name('pegawai.profile');
 Route::get('/data_pegawai/{id}/edit', 'PegawaiController@edit')->name('pegawai.edit');
 Route::post('/data_pegawai/{id}/update', 'PegawaiController@update')->name('pegawai.update');
+Route::get('/data_pegawai/{id}/delete', 'PegawaiController@delete')->name('pegawai.delete');

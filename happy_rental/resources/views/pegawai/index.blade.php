@@ -52,7 +52,7 @@ Pegawai
                                             <td>{{ $pgw->jabatan }}</td>
                                             <td><img src="{{ $pgw->getAvatar() }}" width="100" height="100" alt=""></td>
                                             <td><a href="{{ route('pegawai.edit', $pgw->id) }}" class="btn btn-warning">Edit</a></td>
-                                            <td><a href="" class="btn btn-danger">Delete</a></td>
+                                            <td><a href="{{ route('pegawai.delete', $pgw->id) }}" class="btn btn-danger">Delete</a></td>
                                         </tr>
                                         @php
                                         $no++;

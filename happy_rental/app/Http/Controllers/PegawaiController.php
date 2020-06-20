@@ -60,7 +60,8 @@ class PegawaiController extends Controller
 
         $user = User::where('id', $pegawai->user_id);
         $user->update([
-            'email' => $request->email
+            'name' => $request->name,
+            'email' => $request->email,
             ]);
 
         if ($request->hasFile('foto')) {
@@ -70,5 +71,15 @@ class PegawaiController extends Controller
         }
 
         return redirect('/data_pegawai');
+    }
+
+    public function delete($id)
+    {
+        $pegawai = Pegawai::find($id);
+        $pegawai->delete($pegawai);
+        $user = User::where('id', $pegawai->user_id);
+        $user->delete($user);
+
+        return redirect()->back();
     }
 }

@@ -83,4 +83,26 @@ class RentalController extends Controller
 
         return view('motor.edit', compact(['motor']));
     }
+
+    public function motorupdate($id, Request $request)
+    {
+        $motor = Motor::find($id);
+        $motor->update($request->all());
+
+        if ($request->hasFile('foto')) {
+            $request->file('foto')->move('motor/', $request->file('foto')->getClientOriginalName());
+            $motor->foto = $request->file('foto')->getClientOriginalName();
+            $motor->save();
+        }
+
+        return redirect('/data_motor');
+    }
+
+    public function motordelete($id)
+    {
+        $motor = Motor::find($id);
+        $motor->delete($motor);
+
+        return redirect()->back();
+    }
 }

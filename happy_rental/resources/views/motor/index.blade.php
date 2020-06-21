@@ -50,7 +50,7 @@ Motor
                                                 <td>{{ $mtr->plat_nomor }}</td>
                                                 <td><img src="{{ $mtr->getAvatar() }}" width="100" height="100" alt=""></td>
                                                 <td><a href="{{ route('motor.edit', $mtr->id) }}" class="btn btn-warning"><span>Edit</span></a></td>
-                                                <td><a href="" class="btn btn-danger"><span>Hapus</span></a></td>
+                                                <td><a href="{{ route('motor.delete', $mtr->id) }}" class="btn btn-danger"><span>Hapus</span></a></td>
                                             </tr>
                                             @php
                                             $no++;

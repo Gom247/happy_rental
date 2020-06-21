@@ -36,3 +36,5 @@ Route::get('/data_mobil/{id}/delete', 'RentalController@mobildelete')->name('mob
 Route::get('/data_motor', 'RentalController@motor')->name('motor');
 Route::post('/data_motor/create', 'RentalController@motorcreate')->name('motor.create');
 Route::get('/data_motor/{id}/edit', 'RentalController@motoredit')->name('motor.edit');
+Route::post('/data_motor/{id}/update', 'RentalController@motorupdate')->name('motor.update');
+Route::get('/data_motor/{id}/delete', 'RentalController@motordelete')->name('motor.delete');

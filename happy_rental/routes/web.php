@@ -18,11 +18,14 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboards', 'DashboardController@index')->name('dashboard');
+
 Route::get('/data_pegawai', 'PegawaiController@index')->name('pegawai');
 Route::post('/data_pegawai', 'PegawaiController@create')->name('pegawai.create');
 Route::get('/data_pegawai/{id}/profile', 'PegawaiController@profile')->name('pegawai.profile');
 Route::get('/data_pegawai/{id}/edit', 'PegawaiController@edit')->name('pegawai.edit');
 Route::post('/data_pegawai/{id}/update', 'PegawaiController@update')->name('pegawai.update');
 Route::get('/data_pegawai/{id}/delete', 'PegawaiController@delete')->name('pegawai.delete');
+
 Route::get('/data_mobil', 'RentalController@mobil')->name('mobil');
 Route::post('/data_mobil/create', 'RentalController@mobilcreate')->name('mobil.create');
+Route::get('/data_mobil/{id}/edit', 'RentalController@mobiledit')->name('mobil.edit');

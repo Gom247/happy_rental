@@ -50,7 +50,7 @@ Mobil
                                             <td>{{ $mbl->plat_nomor }}</td>
                                             <td>{{ $mbl->harga }}</td>
                                             <td><img src="{{ $mbl->getAvatar() }}" width="100" height="100" alt=""></td>
-                                            <td><a href="" class="btn btn-warning"><span>Edit</span></a></td>
+                                            <td><a href="{{ route('mobil.edit', $mbl->id) }}" class="btn btn-warning"><span>Edit</span></a></td>
                                             <td><a href="" class="btn btn-danger"><span>Delete</span></a></td>
                                         </tr>
                                         @php

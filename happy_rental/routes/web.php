@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,3 +30,9 @@ Route::get('/data_pegawai/{id}/delete', 'PegawaiController@delete')->name('pegaw
 Route::get('/data_mobil', 'RentalController@mobil')->name('mobil');
 Route::post('/data_mobil/create', 'RentalController@mobilcreate')->name('mobil.create');
 Route::get('/data_mobil/{id}/edit', 'RentalController@mobiledit')->name('mobil.edit');
+Route::post('/data_mobil/{id}/update', 'RentalController@mobilupdate')->name('mobil.update');
+Route::get('/data_mobil/{id}/delete', 'RentalController@mobildelete')->name('mobil.delete');
+
+Route::get('/data_motor', 'RentalController@motor')->name('motor');
+Route::post('/data_motor/create', 'RentalController@motorcreate')->name('motor.create');
+Route::get('/data_motor/{id}/edit', 'RentalController@motoredit')->name('motor.edit');

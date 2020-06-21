@@ -15,7 +15,7 @@
                         <div id="subPages" class="collapse ">
                             <ul class="nav">
                                 <li><a href="{{ route('mobil') }}" class="">Mobil</a></li>
-                                <li><a href="page-login.html" class="">Motor</a></li>
+                                <li><a href="{{ route('motor') }}" class="">Motor</a></li>
                             </ul>
                         </div>
                     </li>

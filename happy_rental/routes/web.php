@@ -43,6 +43,8 @@ Route::group(['middleware' => ['auth', 'checkRole:Manager, Keuangan, CS']], func
     Route::get('/data_motor/{id}/edit', 'RentalController@motoredit')->name('motor.edit');
     Route::post('/data_motor/{id}/update', 'RentalController@motorupdate')->name('motor.update');
     Route::get('/data_motor/{id}/delete', 'RentalController@motordelete')->name('motor.delete');
+
+    Route::get('/profile/{id}', 'PegawaiController@profileUser')->name('profile');
 });
 
 

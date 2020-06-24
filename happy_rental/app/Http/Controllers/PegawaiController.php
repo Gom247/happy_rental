@@ -82,4 +82,13 @@ class PegawaiController extends Controller
 
         return redirect()->back();
     }
+
+    public function profileUser($id)
+    {
+        $user = User::find($id);
+
+        $pegawai = Pegawai::where('user_id', $user);
+
+        return view('pegawai.update_profile', compact(['pegawai']));
+    }
 }

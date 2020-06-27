@@ -18,7 +18,7 @@ class CreateTableMember extends Migration
             $table->text('no_member');
             $table->string('name');
             $table->string('jenis_kelamin');
-            $table->string('email');
+            $table->string('email')->unique();
             $table->text('alamat');
             $table->string('kode_pos');
             $table->string('no_tlp');

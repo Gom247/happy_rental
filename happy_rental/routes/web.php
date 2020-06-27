@@ -57,6 +57,9 @@ Route::group(['middleware' => ['auth', 'checkRole:Manager, Keuangan, CS']], func
     ]);
 
     Route::get('/data_member', 'MemberController@index')->name('member');
+    Route::post('/data_member', 'MemberController@create')->name('member.create');
+    Route::get('/data_member/{id}/profile', 'MemberController@profile')->name('member.profile');
+    Route::get('/data_member/{id}/edit', 'MemberController@edit')->name('member.edit');
     Route::get('get.data.member', [
         'uses' => 'MemberController@getdatamember',
         'as' => 'get.data.member'

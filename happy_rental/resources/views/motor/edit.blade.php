@@ -42,7 +42,7 @@ Motor
                                     <input type="file" name="foto" class="form-control" id="">
                                 </div>
                                 <div class="panel-footer">
-                                    <button type="submit" class="btn btn-primary">Simpan</button>
+                                    <button type="submit" class="btn btn-primary">Simpan</button> || <a href="{{ route('motor.delete', $motor->id) }}" class="btn btn-danger"><span>Delete</span></a>
                                 </div>
                             </form>
                         </div>

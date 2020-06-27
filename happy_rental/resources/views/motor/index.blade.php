@@ -23,40 +23,19 @@ Motor
                         <div class="panel-body">
                             <div class="table-responsive">
                                 <table class="table-responsive">
-                                    <table class="table table-bordered table-striped table-hover">
+                                    <table class="table table-bordered table-striped table-hover" id="table">
                                         <thead>
                                             <tr>
-                                                <th>NO</th>
                                                 <th>Kode</th>
                                                 <th>Nama</th>
                                                 <th>Merek</th>
                                                 <th>Harga</th>
                                                 <th>Plat Nomor</th>
                                                 <th>Foto</th>
-                                                <th colspan="2">Aksi</th>
+                                                <th>Aksi</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                            @php
-                                            $no = 1;
-                                            @endphp
-                                            @foreach($motor as $mtr)
-                                            <tr>
-                                                <td>{{ $no }}</td>
-                                                <td>{{ $mtr->kode }}</td>
-                                                <td>{{ $mtr->nama }}</td>
-                                                <td>{{ $mtr->merek }}</td>
-                                                <td>{{ $mtr->harga }}</td>
-                                                <td>{{ $mtr->plat_nomor }}</td>
-                                                <td><img src="{{ $mtr->getAvatar() }}" width="100" height="100" alt=""></td>
-                                                <td><a href="{{ route('motor.edit', $mtr->id) }}" class="btn btn-warning"><span>Edit</span></a></td>
-                                                <td><a href="{{ route('motor.delete', $mtr->id) }}" class="btn btn-danger"><span>Hapus</span></a></td>
-                                            </tr>
-                                            @php
-                                            $no++;
-                                            @endphp
-                                            @endforeach
-                                        </tbody>
+
                                     </table>
                                 </table>
                             </div>
@@ -112,4 +91,25 @@ Motor
         </div>
     </div>
 </div>
+@endsection
+
+@section('js')
+<script>
+    $(document).ready(function(){
+        $('#table').dataTable({
+            processing:true,
+            serverside:true,
+            ajax:"{{ route('get.data.motor') }}",
+            columns:[
+                {data:'kode', name:'kode'},
+                {data:'nama', name:'nama'},
+                {data:'merek', name:'merek'},
+                {data:'harga', name:'harga'},
+                {data:'plat_nomor', name:'plat_nomor'},
+                {data:'foto', name:'foto'},
+                {data:'edit', name:'edit'},
+            ]
+        });
+    });
+</script>
 @endsection

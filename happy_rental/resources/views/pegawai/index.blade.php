@@ -22,7 +22,7 @@ Pegawai
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
-                                <table id="table_id" class="table table-hover" width="100%">
+                                <table id="table_id" class="table table-bordered table-striped table-hover" width="100%">
                                     <thead>
                                         <tr>
                                             <th>Nama</th>
@@ -31,6 +31,7 @@ Pegawai
                                             <th>Alamat</th>
                                             <th>No Tlp</th>
                                             <th>Posisi</th>
+                                            <th>Foto</th>
                                             <th colspan="2">Aksi</th>
                                         </tr>
                                     </thead>
@@ -133,6 +134,7 @@ Pegawai
                 {data:'alamat', name:'alamat'},
                 {data:'no_tlp', name:'no_tlp'},
                 {data:'jabatan', name:'jabatan'},
+                {data:'foto', name:'foto'},
                 {data:'profile', name:'profile'},
             ]
         });

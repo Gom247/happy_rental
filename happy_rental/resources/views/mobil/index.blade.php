@@ -22,10 +22,9 @@ Mobil
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered table-hover table-striped">
+                                <table class="table table-bordered table-hover table-striped" width="100%" id="table">
                                     <thead>
                                         <tr>
-                                            <th>No</th>
                                             <th>Kode</th>
                                             <th>Nama</th>
                                             <th>Merek</th>
@@ -33,33 +32,12 @@ Mobil
                                             <th>Plat Nomor</th>
                                             <th>Harga</th>
                                             <th>Foto</th>
-                                            <th colspan="2">Aksi</th>
+                                            <th>Aksi</th>
+
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        @php
-                                        $no = 1;
-                                        @endphp
-                                        @foreach($mobil as $mbl)
-                                        <tr>
-                                            <td>{{ $no }}</td>
-                                            <td>{{ $mbl->kode }}</td>
-                                            <td>{{ $mbl->nama }}</td>
-                                            <td>{{ $mbl->merek }}</td>
-                                            <td>{{ $mbl->kapasitas }}</td>
-                                            <td>{{ $mbl->plat_nomor }}</td>
-                                            <td>{{ $mbl->harga }}</td>
-                                            <td><img src="{{ $mbl->getAvatar() }}" width="100" height="100" alt=""></td>
-                                            <td><a href="{{ route('mobil.edit', $mbl->id) }}" class="btn btn-warning"><span>Edit</span></a></td>
-                                            <td><a href="{{ route('mobil.delete', $mbl->id) }}" class="btn btn-danger"><span>Delete</span></a></td>
-                                        </tr>
-                                        @php
-                                        $no++;
-                                        @endphp
-                                        @endforeach
-                                    </tbody>
+
                                 </table>
-                                {{ $mobil->links() }}
                             </div>
                         </div>
                     </div>
@@ -118,4 +96,26 @@ Mobil
         </div>
     </div>
 </div>
+@endsection
+
+@section('js')
+<script>
+    $(document).ready(function(){
+        $('#table').dataTable({
+            processing:true,
+            serverside:true,
+            ajax:"{{ route('get.data.mobil') }}",
+            columns:[
+                {data:'kode', name:'kode'},
+                {data:'nama', name:'nama'},
+                {data:'kapasitas', name:'kapasistas'},
+                {data:'merek', name:'merek'},
+                {data:'harga', name:'harga'},
+                {data:'plat_nomor', name:'plat_nomor'},
+                {data:'foto', name:'foto'},
+                {data:'edit', name:'edit'},
+            ]
+        });
+    });
+</script>
 @endsection

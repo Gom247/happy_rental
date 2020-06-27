@@ -101,7 +101,10 @@ class PegawaiController extends Controller
         ->addColumn('profile', function($p){
             return '<a href="/data_pegawai/'.$p->id.'/profile" class="btn btn-primary">Profile</a>';
         })
-        ->rawColumns(['profile'])
+        ->addColumn('foto', function($p){
+            return ' <img src="'.$p->getAvatar().'" width="100" height="100" alt="">';
+        })
+        ->rawColumns(['profile', 'foto'])
         ->toJson();
 
     }

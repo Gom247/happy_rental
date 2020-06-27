@@ -5,12 +5,13 @@ namespace App\Http\Controllers;
 use App\Mobil;
 use App\Motor;
 use Illuminate\Http\Request;
+use Yajra\DataTables\Facades\DataTables;
 
 class RentalController extends Controller
 {
     public function mobil()
     {
-        $mobil = Mobil::paginate(10);
+        $mobil = Mobil::all();
 
         return view('mobil.index', compact(['mobil']));
     }
@@ -57,9 +58,24 @@ class RentalController extends Controller
         return redirect()->back();
     }
 
+    public function getdatamobil()
+    {
+        $mobil = Mobil::select('mobil.*');
+
+        return DataTables::eloquent($mobil)
+        ->addColumn('edit', function($m){
+            return '<a href="/data_mobil/'.$m->id.'/edit" class="btn btn-warning">Edit</a>';
+        })
+        ->addColumn('foto', function($m){
+            return ' <img src="'.$m->getAvatar().'" width="100" height="100" alt="">';
+        })
+        ->rawColumns(['edit', 'foto'])
+        ->toJson();
+    }
+
     public function motor()
     {
-        $motor = Motor::paginate(10);
+        $motor = Motor::all();
 
         return view('motor.index', compact(['motor']));
     }
@@ -104,5 +120,20 @@ class RentalController extends Controller
         $motor->delete($motor);
 
         return redirect()->back();
+    }
+
+    public function getdatamotor()
+    {
+        $motor = Motor::select('motor.*');
+
+        return DataTables::eloquent($motor)
+        ->addColumn('edit', function($m){
+            return '<a href="/data_motor/'.$m->id.'/edit" class="btn btn-warning">Edit</a>';
+        })
+        ->addColumn('foto', function($m){
+            return ' <img src="'.$m->getAvatar().'" width="100" height="100" alt="">';
+        })
+        ->rawColumns(['edit', 'foto'])
+        ->toJson();
     }
 }

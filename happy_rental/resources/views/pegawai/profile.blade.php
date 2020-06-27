@@ -49,14 +49,15 @@ Profile
 									</li>
 								</ul>
 							</div>
-							<div class="text-center"><a href="{{ route('pegawai.edit', $pegawai->id) }}" class="btn btn-primary">Edit Profile</a></div>
+                            <div class="text-center"><a href="{{ route('pegawai.edit', $pegawai->id) }}" class="btn btn-primary">Edit Profile</a></div><br>
+                            <div class="text-center"><a href="{{ route('pegawai.delete', $pegawai->id) }}" class="btn btn-danger"> <span>Delete</span></a></div>
 						</div>
 						<!-- END PROFILE DETAIL -->
 					</div>
 					<!-- END LEFT COLUMN -->
 					<!-- RIGHT COLUMN -->
 					<div class="profile-right">
-						
+
 					</div>
 					<!-- END RIGHT COLUMN -->
 				</div>

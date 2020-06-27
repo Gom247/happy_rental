@@ -22,45 +22,20 @@ Pegawai
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered table-hover table-striped">
+                                <table id="table_id" class="table table-hover" width="100%">
                                     <thead>
                                         <tr>
-                                            <th scope="row">No</th>
                                             <th>Nama</th>
                                             <th>Email</th>
                                             <th>Jenis Kelamin</th>
                                             <th>Alamat</th>
                                             <th>No Tlp</th>
                                             <th>Posisi</th>
-                                            <th>Foto</th>
                                             <th colspan="2">Aksi</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        @php
-                                        $no = 1;
-                                        @endphp
-                                        @foreach($pegawai as $pgw)
-                                        <tr>
-                                            <td>{{ $no }}</td>
-                                            <td><a href="{{ route('pegawai.profile', $pgw->id) }}">{{ $pgw->name }}</a>
-                                            </td>
-                                            <td>{{ $pgw->email }}</td>
-                                            <td>{{ $pgw->jenis_kelamin }}</td>
-                                            <td>{{ $pgw->alamat }}</td>
-                                            <td>{{ $pgw->no_tlp }}</td>
-                                            <td>{{ $pgw->jabatan }}</td>
-                                            <td><img src="{{ $pgw->getAvatar() }}" width="100" height="100" alt=""></td>
-                                            <td><a href="{{ route('pegawai.edit', $pgw->id) }}" class="btn btn-warning">Edit</a></td>
-                                            <td><a href="{{ route('pegawai.delete', $pgw->id) }}" class="btn btn-danger">Delete</a></td>
-                                        </tr>
-                                        @php
-                                        $no++;
-                                        @endphp
-                                        @endforeach
-                                    </tbody>
+
                                 </table>
-                                {{ $pegawai->links() }}
                             </div>
                         </div>
                     </div>
@@ -142,4 +117,25 @@ Pegawai
         </div>
     </div>
 </div>
+@endsection
+
+@section('js')
+<script>
+    $(document).ready( function () {
+        $('#table_id').dataTable({
+            processing:true,
+            serverside:true,
+            ajax:"{{ route('get.data.pegawai') }}",
+            columns:[
+                {data:'name', name:'name'},
+                {data:'email', name:'email'},
+                {data:'jenis_kelamin', name:'jenis_kelamin'},
+                {data:'alamat', name:'alamat'},
+                {data:'no_tlp', name:'no_tlp'},
+                {data:'jabatan', name:'jabatan'},
+                {data:'profile', name:'profile'},
+            ]
+        });
+    } );
+</script>
 @endsection

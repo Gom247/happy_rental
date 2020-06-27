@@ -14,9 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/login', 'DashboardController@login')->name('login');
 Route::post('/postlogin', 'DashboardController@postlogin')->name('login.post');
@@ -45,7 +43,15 @@ Route::group(['middleware' => ['auth', 'checkRole:Manager, Keuangan, CS']], func
     Route::get('/data_motor/{id}/delete', 'RentalController@motordelete')->name('motor.delete');
 
     Route::get('/profile/{id}', 'PegawaiController@profileUser')->name('profile');
+
+    Route::get('getdatapegawai', [
+        'uses' => 'PegawaiController@getdatapegawai',
+        'as' => 'get.data.pegawai'
+    ]);
+    
 });
+
+
 
 
 

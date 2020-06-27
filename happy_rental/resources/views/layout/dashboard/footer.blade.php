@@ -13,7 +13,9 @@
 <script src="{{ asset('dashboard/assets/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js') }}"></script>
 <script src="{{ asset('dashboard/assets/vendor/chartist/js/chartist.min.js') }}"></script>
 <script src="{{ asset('dashboard/assets/scripts/klorofil-common.js') }}"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
 
+@yield('js')
 </body>
 
 </html>

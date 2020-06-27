@@ -19,6 +19,8 @@
                             </ul>
                         </div>
                     </li>
+                    <li><a href=""><i class="lnr lnr-user"></i> <span>Member</span></a></li>
+                    <li><a href=""><i class="lnr lnr-file-add"></i> <span>Pesan</span></a></li>
                 </ul>
             </nav>
         </div>

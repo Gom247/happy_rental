@@ -7,12 +7,13 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Yajra\DataTables\Facades\DataTables;
 
 class PegawaiController extends Controller
 {
     public function index()
     {
-        $pegawai = Pegawai::paginate(10);
+        $pegawai = Pegawai::all();
 
         return view('pegawai.index', compact(['pegawai']));
     }
@@ -90,5 +91,18 @@ class PegawaiController extends Controller
         $pegawai = Pegawai::where('user_id', $user);
 
         return view('pegawai.update_profile', compact(['pegawai']));
+    }
+
+    public function getdatapegawai()
+    {
+        $pegawai = Pegawai::select('pegawai.*');
+
+        return DataTables::eloquent($pegawai)
+        ->addColumn('profile', function($p){
+            return '<a href="/data_pegawai/'.$p->id.'/profile" class="btn btn-primary">Profile</a>';
+        })
+        ->rawColumns(['profile'])
+        ->toJson();
+
     }
 }

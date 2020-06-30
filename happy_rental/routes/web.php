@@ -60,6 +60,8 @@ Route::group(['middleware' => ['auth', 'checkRole:Manager, Keuangan, CS']], func
     Route::post('/data_member', 'MemberController@create')->name('member.create');
     Route::get('/data_member/{id}/profile', 'MemberController@profile')->name('member.profile');
     Route::get('/data_member/{id}/edit', 'MemberController@edit')->name('member.edit');
+    Route::post('/data_member/{id}/update', 'MemberController@update')->name('member.update');
+    Route::get('/data_member/{id}/delete', 'MemberController@delete')->name('member.delete');
     Route::get('get.data.member', [
         'uses' => 'MemberController@getdatamember',
         'as' => 'get.data.member'

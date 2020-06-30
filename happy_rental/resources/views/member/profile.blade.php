@@ -52,7 +52,7 @@ Profile
                                 </ul>
                             </div>
                             <div class="text-center"><a href="{{ route('member.edit', $member->id) }}" class="btn btn-primary">Edit Profile</a></div>
-                            <div class="text-center"><a href="#" class="btn btn-danger">Delete Profile</a></div>
+                            <div class="text-center"><a href="{{ route('member.delete', $member->id) }}" class="btn btn-danger">Delete Profile</a></div>
                         </div>
                         <!-- END PROFILE DETAIL -->
                     </div>

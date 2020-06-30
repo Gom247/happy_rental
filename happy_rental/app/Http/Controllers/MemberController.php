@@ -59,6 +59,34 @@ class MemberController extends Controller
         return view('member.edit', compact(['member']));
     }
 
+    public function update($id, Request $request)
+    {
+        $member = Member::find($id);
+        $member->update($request->all());
+
+        if ($request->hasFile('identitas')) {
+            $request->file('identitas')->move('member/', $request->file('identitas')->getClientOriginalName());
+            $member->identitas = $request->file('identitas')->getClientOriginalName();
+            $member->save();
+        }
+
+        if ($request->hasFile('foto')) {
+            $request->file('foto')->move('member/', $request->file('foto')->getClientOriginalName());
+            $member->foto = $request->file('foto')->getClientOriginalName();
+            $member->save();
+        }
+
+        return redirect('/data_member');
+    }
+
+    public function delete($id)
+    {
+        $member = Member::find($id);
+        $member->delete($id);
+
+        return redirect('/data_member');
+    }
+
     public function getdatamember()
     {
         $member = Member::select('member.*');

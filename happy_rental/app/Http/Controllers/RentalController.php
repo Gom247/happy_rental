@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Mobil;
 use App\Motor;
+use App\Pesan;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -135,5 +136,32 @@ class RentalController extends Controller
         })
         ->rawColumns(['edit', 'foto'])
         ->toJson();
+    }
+
+    public function pesan(Request $request)
+    {
+        Pesan::create([
+            'nama' => $request->nama,
+            'no_member' => $request->no_member,
+            'sopir' => $request->sopir,
+            'tanggal' => $request->tanggal,
+            'hari' => $request->hari,
+            'denda' => "0",
+        ]);
+        return view('home.succes')->with('succes', 'Pesan Berhasil');
+    }
+
+    public function datapesan()
+    {
+        $pesan = Pesan::all();
+
+        return view('pesan.index', compact(['pesan']));
+    }
+
+    public function datapesanedit($member)
+    {
+        $pesan = Pesan::where('no_member', $member)->count();
+
+        return view('pesan.edit');
     }
 }

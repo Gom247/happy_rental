@@ -2,6 +2,15 @@
   </div>
   <!-- /#wrapper -->
 
+  <!-- Sticky Footer -->
+  <footer class="sticky-footer">
+    <div class="container my-auto">
+      <div class="copyright text-center my-auto">
+        <span>Copyright © Your Website 2019</span>
+      </div>
+    </div>
+  </footer>
+
   <!-- Scroll to Top Button-->
   <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
@@ -44,7 +53,15 @@
   <!-- Demo scripts for this page-->
   <script src="{{ asset('home/js/demo/datatables-demo.js') }}"></script>
   <script src="{{ asset('home/js/demo/chart-area-demo.js') }}"></script>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+  <script>
+    @if(Session::has('succes'))
+        toastr.success("{{ Session::get('succes') }}", "Succes")
+    @endif
+    @if(Session::has('error'))
+        toastr.error("{{ Session::get('error') }}", "error")
+    @endif
+</script>
 </body>
 
 </html>

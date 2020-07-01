@@ -6,8 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Mobil extends Model
 {
-    protected $table = "mobil";
+    protected $table = 'mobil';
     protected $fillable = ['kode', 'nama', 'kapasitas', 'merek', 'harga', 'plat_nomor', 'foto'];
+    protected $date = ['created_at'];
 
     public function getAvatar()
     {
@@ -17,4 +18,5 @@ class Mobil extends Model
 
         return asset('mobil/'.$this->foto);
     }
+
 }

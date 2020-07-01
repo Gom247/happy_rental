@@ -19,6 +19,12 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/login', 'DashboardController@login')->name('login');
 Route::post('/postlogin', 'DashboardController@postlogin')->name('login.post');
 Route::get('/logout', 'DashboardController@logout')->name('logout');
+Route::get('/mobil/{id}/detail', 'HomeController@mobil')->name('mobil.detail');
+Route::get('/mobil/{id}/pesan', 'HomeController@pesanmobil')->name('pesan.mobil');
+Route::get('/registrasi', 'HomeController@registasi')->name('registrasi');
+Route::post('/registrasi/create', 'HomeController@create')->name('registrasi.create');
+Route::post('/pesan', 'RentalController@pesan')->name('pesan.create');
+
 
 Route::group(['middleware' => ['auth', 'checkRole:Manager, Keuangan, CS']], function() {
     Route::get('/dashboards', 'DashboardController@index')->name('dashboard');
@@ -66,6 +72,9 @@ Route::group(['middleware' => ['auth', 'checkRole:Manager, Keuangan, CS']], func
         'uses' => 'MemberController@getdatamember',
         'as' => 'get.data.member'
     ]);
+
+    Route::get('/data_pesan', 'RentalController@datapesan')->name('rental');
+    Route::get('/data_pesan/{member}/edit', 'RentalController@datapesanedit')->name('rental.edit');
 });
 
 

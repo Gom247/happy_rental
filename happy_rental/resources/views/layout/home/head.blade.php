@@ -20,8 +20,11 @@
   <!-- Custom styles for this template-->
   <link href="{{ asset('home/css/sb-admin.css') }}" rel="stylesheet">
 
+  <!-- Toastr -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
 </head>
 
 <body id="page-top">
 
-  
+

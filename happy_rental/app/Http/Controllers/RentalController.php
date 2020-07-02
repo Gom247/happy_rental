@@ -151,17 +151,4 @@ class RentalController extends Controller
         return view('home.succes')->with('succes', 'Pesan Berhasil');
     }
 
-    public function datapesan()
-    {
-        $pesan = Pesan::all();
-
-        return view('pesan.index', compact(['pesan']));
-    }
-
-    public function datapesanedit($member)
-    {
-        $pesan = Pesan::where('no_member', $member)->count();
-
-        return view('pesan.edit');
-    }
 }

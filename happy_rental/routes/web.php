@@ -19,11 +19,21 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/login', 'DashboardController@login')->name('login');
 Route::post('/postlogin', 'DashboardController@postlogin')->name('login.post');
 Route::get('/logout', 'DashboardController@logout')->name('logout');
+
+Route::get('/mobil/index', 'HomeController@mobilindex')->name('mobil.index');
 Route::get('/mobil/{id}/detail', 'HomeController@mobil')->name('mobil.detail');
 Route::get('/mobil/{id}/pesan', 'HomeController@pesanmobil')->name('pesan.mobil');
+
 Route::get('/registrasi', 'HomeController@registasi')->name('registrasi');
 Route::post('/registrasi/create', 'HomeController@create')->name('registrasi.create');
+
 Route::post('/pesan', 'RentalController@pesan')->name('pesan.create');
+
+Route::get('/motor/index', 'HomeController@motorindex')->name('motor.index');
+Route::get('/motor/{id}/detail', 'HomeController@motor')->name('motor.detail');
+Route::get('/motor/{id}/pesan', 'HomeController@pesanmotor')->name('pesan.motor');
+
+Route::get('/about', 'HomeController@about')->name('about');
 
 
 Route::group(['middleware' => ['auth', 'checkRole:Manager, Keuangan, CS']], function() {
@@ -73,8 +83,9 @@ Route::group(['middleware' => ['auth', 'checkRole:Manager, Keuangan, CS']], func
         'as' => 'get.data.member'
     ]);
 
-    Route::get('/data_pesan', 'RentalController@datapesan')->name('rental');
-    Route::get('/data_pesan/{member}/edit', 'RentalController@datapesanedit')->name('rental.edit');
+    Route::get('/data_pesan', 'PesanController@index')->name('rental');
+    Route::get('/data_pesan/{id}/edit', 'PesanController@edit')->name('rental.edit');
+    Route::post('/data_pesan/{id}/update', 'PesanController@update')->name('rental.update');
 });
 
 

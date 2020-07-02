@@ -18,12 +18,19 @@ class HomeController extends Controller
         return view('home.index', compact(['mobil', 'motor']));
     }
 
+    public function mobilindex()
+    {
+        $mobil = Mobil::paginate(10);
+
+        return view('home.mobil', compact(['mobil']));
+    }
+
     public function mobil($id)
     {
         $mobil = Mobil::find($id);
 
 
-        return view('home.mobil', compact(['mobil']));
+        return view('home.mobil_detail', compact(['mobil']));
     }
 
     public function registasi()
@@ -65,6 +72,32 @@ class HomeController extends Controller
     {
         $mobil = Mobil::find($id);
         return view('home.pesanan_mobil', compact(['mobil']));
+    }
+
+    public function motorindex()
+    {
+        $motor = Motor::paginate(10);
+
+        return view('home.motor', compact(['motor']));
+    }
+
+    public function motor($id)
+    {
+        $motor = Motor::find($id);
+
+        return view('home.motor_detail', compact(['motor']));
+    }
+
+    public function pesanmotor($id)
+    {
+        $motor = Motor::find($id);
+
+        return view('home.pesanan_motor', compact('motor'));
+    }
+
+    public function about()
+    {
+        return view('home.about');
     }
 
 

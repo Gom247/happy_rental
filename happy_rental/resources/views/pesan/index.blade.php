@@ -33,7 +33,7 @@ Pesanan
                                             <td>{{ $psn->nama }}</td>
                                             <td>{{ $psn->tanggal }}</td>
                                             <td>{{ $psn->hari }}</td>
-                                            <td><a href="{{ route('rental.edit', $psn->no_member) }}" class="btn btn-primary"><span>Edit</span></a>
+                                            <td><a href="{{ route('rental.edit', $psn->id) }}" class="btn btn-primary"><span>Edit</span></a>
                                                 <a href="" class="btn btn-primary"><span>Print</span></a>
                                             </td>
                                         </tr>

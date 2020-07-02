@@ -44,7 +44,7 @@ Happy Rental
                                     <img src="{{ $mtr->getAvatar() }}" class="card-img-top" alt="{{ $mtr->foto }}">
                                     <div class="card-body">
                                         <h5 class="card-title">{{ $mtr->nama }}</h5>
-                                        <a href="" class="btn btn-primary"><span>Detail</span></a> || <a href="" class="btn btn-primary"><span>Pesan</span></a>
+                                        <a href="{{ route('motor.detail', $mtr->id) }}" class="btn btn-primary"><span>Detail</span></a> || <a href="{{ route('pesan.motor', $mtr->id) }}" class="btn btn-primary"><span>Pesan</span></a>
                                         <p class="card-text"><small class="text-muted">{{ $mtr->created_at->format('D, d M Y') }}</small></p>
                                     </div>
                                 </div>
